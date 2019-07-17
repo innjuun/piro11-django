@@ -9,6 +9,7 @@ def lnglat_validator(value):
 
 
 class Post(models.Model):
+    author = models.CharField(max_length=20)
     title = models.CharField(max_length=100,
                              choices=(
                                  ('제목1', '제목1 레이블'),  # 저장될 값과 UI에 보여질 레이블
@@ -22,7 +23,7 @@ class Post(models.Model):
     content = models.TextField(verbose_name="내용")
     tags = models.CharField(max_length=100, blank=True,)
     lnglat = models.CharField(max_length=50, validators=[lnglat_validator],
-                              help_text='경도,위도 포맷으로 입력', blank=True, )
+                              help_text='경도,위도 포맷으로 입력', blank=True,)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
