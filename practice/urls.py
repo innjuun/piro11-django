@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #path('', include('core.urls'), name ='core'),
     url(r'^blog/', include('blog.urls')),
+    url(r'^dojo/', include('dojo.urls'))
 
 ]
