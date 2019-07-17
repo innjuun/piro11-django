@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h4>{{ article.title }}</h4>
+    <hr>
+    <p>{{ article.contents }}</p>
+
+    <div style="margin-top: 100px">
+        <a href="{% url 'core:article_list' %}">게시판이용하기</a>
+
+    </div>
+
+{% endblock %}

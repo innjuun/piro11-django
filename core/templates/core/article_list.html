@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>article list입니다.</p>
+
+    {% for article in articles %}
+        <li><a href="{% url 'core:article_detail' article.pk %}">{{ article }}</a></li>
+    {% endfor %}
+
+{% endblock %}
