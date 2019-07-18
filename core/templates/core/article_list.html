@@ -6,4 +6,9 @@
         <li><a href="{% url 'core:article_detail' article.pk %}">{{ article }}</a></li>
     {% endfor %}
 
+    <div style="margin-top: 100px">
+        <a href="{% url 'core:article_create' %}">게시글 작성하러 가기</a><br/>
+
+
+    </div>
 {% endblock %}

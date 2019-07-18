@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <label>제목</label>
+        <input name="title" {% if article %}value="{{ article.title }}"{% endif %}><br/>
+        <label>내용</label>
+        <input name="contents" {% if article %}value="{{ article.contents }}"{% endif %}><br/>
+        <label>저자</label>
+        <input name="author" {% if article %}value="{{ article.author }}"{% endif %}><br/>
+        <button type="submit">제출</button>
+    </form>
+    <div style="margin-top: 100px">
+        <a href="{% url 'core:article_list' %}">목록으로 이동</a>
+
+    </div>
+
+{% endblock %}
