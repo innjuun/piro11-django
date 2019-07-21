@@ -43,3 +43,10 @@ class Post(models.Model):
 # class User(models.Model):
 #     idd = models.CharField(max_length=20)
 #     password = models.CharField(max_length=20)
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.CharField(max_length=20)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

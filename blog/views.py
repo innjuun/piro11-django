@@ -9,6 +9,9 @@ def post_list(request):
         qs = qs.filter(title__icontains=q)
     return render(request, 'blog/post_list.html', {'post_list': qs, 'q': q, })
 
+def post_detail(request, id):
+    post = Post.objects.get(id=id)
+    return render(request, 'blog/post_detail.html', {'post': post})
 # def indexV(request):
 #
 #     return render(request, 'blog/index.html')
