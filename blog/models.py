@@ -9,7 +9,12 @@ def lnglat_validator(value):
         raise ValidationError('Invalid LngLat Type')
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+
 class Post(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     STATUS_CHOICES = (
         ('d', 'Draft'),
         ('p', 'Published'),
@@ -17,7 +22,6 @@ class Post(models.Model):
     )
     author = models.CharField(max_length=20)
     title = models.CharField(max_length=100,
-
                              verbose_name="제목",
                              help_text='포스팅 제목을 입력해주세요',
                              )
@@ -33,6 +37,9 @@ class Post(models.Model):
     class Meta:
         ordering = ['-id']
 
-
     def __str__(self):
         return self.title
+
+# class User(models.Model):
+#     idd = models.CharField(max_length=20)
+#     password = models.CharField(max_length=20)

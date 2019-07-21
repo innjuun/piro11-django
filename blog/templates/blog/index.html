@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>index</h1>
+<hr/>
+<form action="posting/" method="POST">
+        {% csrf_token %}
+    제목<input type="text" name="firstInp"><br/>
+    내용<textarea name="longInp" id="" cols="30">
+             </textarea><br/>
+    포스팅해<input type="submit" value="포스팅">
+</form>
+<hr/>
+<form action="register/" method="POST">
+        {% csrf_token %}
+    아이디<input type="text" name="firstInp"><br/>
+    비번<input type ="password" name="longInp" id="" cols="30"><br/>
+    만들어<input type="submit" value="만들기">
+</form>
+<hr/>
+<form action="search/" method="GET">
+        {% csrf_token %}
+    이입력<input type="text" name="firstInp"><br/>
+
+    검색해<input type="submit" value="검색">
+</form>
+</body>
+</html>
