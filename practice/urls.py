@@ -23,7 +23,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('core/', include('core.urls'), name ='core'),
     path('blog/', include('blog.urls')),
-    re_path(r'^dojo/', include('dojo.urls'))
+    path('path/', include('shop.urls')),
+    re_path(r'^dojo/', include('dojo.urls')),
 
 ]
 
