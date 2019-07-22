@@ -63,7 +63,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-d
+
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
