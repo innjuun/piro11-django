@@ -1,33 +1,20 @@
-<!-- blog/templates/blog/post_list.html -->
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends "blog/layout.html" %}
+{% block content %}
+    <form action="" method="get">
+        <input type="text" name="q" value="{{ q }}"/>
+        <input type="submit" value="검색"/>
+    </form>
+    <ul>
+        {% for post in post_list %}
+            <li>
+                {{ post.id }}
+                <a href="http://localhost:8000/blog/{{ post.id }}">
+                    {{ post.title }}
+                </a>
+                <small>by {{ post.author }}</small>
+                <small>at {{ post.updated_at }}</small>
 
-<h1>AskDjango</h1>
-<p>안녕하세요. 여러분의 파이썬/장고 페이스메이커가 되겠습니다. ;)</p>
-<form action = "" method="get">
-    <input type="text" name="q" value = "{{q}}"/>
-    <input type="submit" value="검색"/>
-</form>
-<ul>
-    {% for post in post_list %}
-        <li>
-        {{ post.id }}
-            <a href = "http://localhost:8000/blog/{{ post.id }}">
-            {{ post.title }}
-            </a>
-            <small>by {{ post.author }}</small>
-        <small>at {{ post.updated_at }}</small>
-
-        </li>
-    {% endfor %}
-</ul>
-</body>
-</html>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
