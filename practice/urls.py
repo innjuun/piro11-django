@@ -30,6 +30,8 @@ urlpatterns = [
     path('blog/', include('blog.urls'), name="blog"),
     path('shop/', include('shop.urls'), name="shop"),
     re_path(r'^dojo/', include('dojo.urls'), name="dojo"),
+# namespace 지정하면 오류남.. 그래서 각 app의 url에 app_name을 지정하긴 했는데,
+    #이럴 경우에 project urls의 각 path에서 name을 제거했을때 오류가 또 안뜸. 뭐지?
 
 ]
 

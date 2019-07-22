@@ -3,8 +3,10 @@ from django.forms import ValidationError
 from django.conf import settings
 import re
 
+from django.shortcuts import resolve_url
+from django.urls import reverse
 
-# Create your models here.
+
 def lnglat_validator(value):
     if not re.match(r'^([+-]?\d+\.?\d*),([+-]?\d+\.?\d*)$', value):
         raise ValidationError('Invalid LngLat Type')
@@ -15,6 +17,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
 
 
 class Post(models.Model):
@@ -45,7 +50,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
+    def get_absolute_url(self):
+        return reverse('blog:post_detail', args=[self.id])
 # class User(models.Model):
 #     idd = models.CharField(max_length=20)
 #     password = models.CharField(max_length=20)
@@ -57,7 +63,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
+d
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
