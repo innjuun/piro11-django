@@ -17,19 +17,25 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf.urls import url
 from django.conf import settings
+from django.shortcuts import redirect
+
+def root(request):
+    return redirect('blog:post_list')
 
 urlpatterns = [
+    path('', root, name="root"),
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('core/', include('core.urls'), name ='core'),
-    path('blog/', include('blog.urls')),
-    path('path/', include('shop.urls')),
-    re_path(r'^dojo/', include('dojo.urls')),
+    path('accounts/', include('accounts.urls'), name="accounts"),
+    path('core/', include('core.urls'), name='core'),
+    path('blog/', include('blog.urls'), name="blog"),
+    path('shop/', include('shop.urls'), name="shop"),
+    re_path(r'^dojo/', include('dojo.urls'), name="dojo"),
 
 ]
 
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns += [
         path('__debug__', include(debug_toolbar.urls)),
     ]
