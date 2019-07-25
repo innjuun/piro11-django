@@ -22,8 +22,10 @@ def post_new(request):
             # post = Post.objects.create(title=form.cleaned_data.get('title'),
             #             content=form.cleaned_data.get('content'))
             # post.save()
-            post = Post.objects.create(**form.cleaned_data)
+            post = form.save(commit=False)
+            post.ip = request.META['REMOTE_ADDR']
             post.save()
+
             return redirect('/dojo/')
     else:
         form = PostForm()
