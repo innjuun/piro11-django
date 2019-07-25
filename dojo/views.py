@@ -1,11 +1,34 @@
 # dojo/views.py
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 import os
+from .forms import PostForm
+from .models import Post
 
 
-# Create your views here.
+def post_new(request):
+    if request.method == 'POST':
+
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            # post = Post()
+            # post.title = form.cleaned_data.get('title')
+            # post.content = form.cleaned_data.get('content')
+            # post.save()
+            # post = Post(title=form.cleaned_data.get('title'),
+            #             content=form.cleaned_data.get('content'))
+            # post.save()
+            # post = Post.objects.create(title=form.cleaned_data.get('title'),
+            #             content=form.cleaned_data.get('content'))
+            # post.save()
+            post = Post.objects.create(**form.cleaned_data)
+            post.save()
+            return redirect('/dojo/')
+    else:
+        form = PostForm()
+    return render(request, 'dojo/post_form.html', {'form': form})
+
 
 def mysum(request, numbers):
     # request : HttpRequest
@@ -33,10 +56,10 @@ def post_list2(request):
 
 
 def post_list3(request):
-   return JsonResponse({
-       'message': 'hi python django',
-       'items' : ['python', 'django', 'spring']
-   }, json_dumps_params={'ensure_ascii' : False})
+    return JsonResponse({
+        'message': 'hi python django',
+        'items': ['python', 'django', 'spring']
+    }, json_dumps_params={'ensure_ascii': False})
 
 
 def excel_download(request):
@@ -44,6 +67,6 @@ def excel_download(request):
     filepath = os.path.join(settings.BASE_DIR, 'excel.xlsx')
     filename = os.path.basename(filepath)
     with open(filepath, 'rb') as f:
-        response = HttpResponse(f, content_type = 'application/vnd.ms-excel')
+        response = HttpResponse(f, content_type='application/vnd.ms-excel')
         response['Content-Disposition'] = 'attachment; filename="{}"'.format(filename)
         return response

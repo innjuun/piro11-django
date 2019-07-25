@@ -3,6 +3,8 @@ from django.urls import path
 from . import views
 from . import views_cbv
 urlpatterns = [
+    path('new/', views.post_new),
+
     url(r'^sum/(?P<numbers>[\d/]+)/$', views.mysum),
     path('hello/<str:name>/<int:age>/', views.hello),
 
