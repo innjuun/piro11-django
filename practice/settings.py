@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+from os.path import abspath, dirname, join
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'blog',
     'dojo',
     'shop',
+
+    # 'QRsystem',
 ]
 
 MIDDLEWARE = [
@@ -117,18 +119,29 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+STATIC_ROOT = join(BASE_DIR, '..', ''
+                                   ''
+                                   'static')
+
+print(STATIC_ROOT)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = join(BASE_DIR, '..', 'media')
+
 
 INTERNAL_IPS = ['127.0.0.1']

@@ -18,6 +18,7 @@ from django.urls import path, include, re_path
 from django.conf.urls import url
 from django.conf import settings
 from django.shortcuts import redirect
+from django.conf.urls.static import static
 
 def root(request):
     return redirect('blog:post_list')
@@ -32,8 +33,8 @@ urlpatterns = [
     re_path(r'^dojo/', include('dojo.urls'), name="dojo"),
 # namespace 지정하면 오류남.. 그래서 각 app의 url에 app_name을 지정하긴 했는데,
     #이럴 경우에 project urls의 각 path에서 name을 제거했을때 오류가 또 안뜸. 뭐지?
-
-]
+#    path('QRpage/', include('QRsystem.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
