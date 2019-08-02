@@ -141,7 +141,7 @@ STATIC_ROOT = join(BASE_DIR, 'staticfiles')
 print(STATIC_ROOT)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = join(BASE_DIR, '..', 'media')
+MEDIA_ROOT = join(BASE_DIR, 'media')
 
 
 INTERNAL_IPS = ['127.0.0.1']
