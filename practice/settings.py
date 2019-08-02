@@ -136,9 +136,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'practice', 'static'),
 ]
 
-STATIC_ROOT = join(BASE_DIR, '..', ''
-                                   ''
-                                   'static')
+STATIC_ROOT = join(BASE_DIR, 'staticfiles')
 
 print(STATIC_ROOT)
 
