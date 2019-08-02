@@ -8,7 +8,9 @@
             <div class="col-sm-12">
                 <h2>{{ post.title }}</h2>
                 {{ post.content|linebreaks }}
-                {{ post.photo }}
+                {% if post.photo %}
+                    <img src="{{ post.photo.url }}" style="width:100%">
+                {% endif %}
                 <hr/>
 
                 <h3> comments </h3>
