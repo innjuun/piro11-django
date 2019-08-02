@@ -4,28 +4,30 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-    <div class="row">
-    <div class="col-sm-12">
-    <h2>{{ post.title }}</h2>
-    {{ post.content|linebreaks }}
-    <hr/>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>{{ post.title }}</h2>
+                {{ post.content|linebreaks }}
+                <hr/>
 
-    <h3> comments </h3>
+                <h3> comments </h3>
 
-    {% for comment in post.comment_set.all %}
-        <li>
-            {{ comment.message }}
-            <small>by {{ comment.author }}</small>
-            <small>by {{ comment.updated.at }}</small>
-        </li>
-    {% endfor %}
-    <hr/>
-    <a href="{% url "blog:post_list" %}" class ="btn btn-primary">글 목록</a>
-    <a href="{% url "blog:post_edit" post.id %}" class="btn btn-default">수정하기</a>
+                {% for comment in post.comment_set.all %}
+                    <li>
+                        {{ comment.message }}
+                        <small>by {{ comment.author }}</small>
+                        <small>by {{ comment.updated.at }}</small>
+                    </li>
+                {% endfor %}
+                <hr/>
+                <a href="{% url "blog:post_list" %}" class="btn btn-primary">글 목록</a>
+                <a href="{% url "blog:post_edit" post.id %}" class="btn btn-default">수정하기</a>
+
+
+            </div>
+        </div>
+    </div>
 {% endblock %}
-</div>
-</div>
-</div>
 
 
 
