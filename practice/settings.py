@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'dojo',
     'shop',
 
+    'imagekit',
+
     # 'QRsystem',
 ]
 
