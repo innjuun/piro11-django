@@ -4,7 +4,7 @@ bleach==3.1.0
 colorama==0.4.1
 decorator==4.4.0
 defusedxml==0.6.0
-Django==2.2.3
+Django==2.2.24
 django-extensions==2.1.9
 entrypoints==0.3
 ipykernel==5.1.1
